@@ -1,1 +1,30 @@
-<p>users-list works!</p>
+
+<!-- <input type="text" placeholder="search here" [formControl]="searchInput" /> -->
+<!-- <div class="row">
+  <div class="col-md-6">
+    <div *ngFor="let a of userService.userList; let i = index">
+      <div class="card w-100">
+        <div class="card-body">
+          <h5 class="card-title">{{a.login}}</h5>
+          <p class="card-text">Profile Url: {{a.html_url}}</p>
+          <p class="card-text mt-2">Score: {{a.score}}</p>
+          <a class="btn btn-primary btn pull-right" (click)="getRepoDetails(a.login)">Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+      <div *ngFor="let b of repositories">
+        Name - {{b.name}}
+        Language - {{b.language}}
+        Open issue count - {{b.open_issues_count}}
+        Stars - {{b.stargazers_count}}
+        Fork Count - {{b.forks_count}}
+        Watchers/ Followers - {{b.watchers}}
+      </div>
+  </div>
+</div> -->
+
+<ng-container *ngFor="let user of userListWithCount?.items">
+  <app-user-details [user]="user"></app-user-details>
+</ng-container>

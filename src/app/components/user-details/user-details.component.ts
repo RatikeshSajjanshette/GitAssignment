@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { User } from '../../models/user.dto';
+import { UserRepoDetails } from './../../models/user-repo-details.dto';
+import { UserService } from './../../services/user.service';
 
 @Component({
   selector: 'app-user-details',
@@ -7,9 +11,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserDetailsComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  user: User;
+
+  repoDetails: UserRepoDetails[] = [];
+
+  constructor(private userService: UserService) {}
 
   ngOnInit() {
+    this.userService.getRepoDetails(this.user.repos_url).subscribe((repoDetails) => this.repoDetails = repoDetails);
   }
-
 }

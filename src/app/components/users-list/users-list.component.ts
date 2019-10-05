@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from "@angular/core";
+
+import { UserListWithCount } from "../../models/user.dto";
 
 @Component({
-  selector: 'app-users-list',
-  templateUrl: './users-list.component.html',
-  styleUrls: ['./users-list.component.css']
+  selector: "app-users-list",
+  templateUrl: "./users-list.component.html",
+  styleUrls: ["./users-list.component.css"]
 })
-export class UsersListComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+export class UsersListComponent {
+  @Input()
+  userListWithCount: UserListWithCount;
 }

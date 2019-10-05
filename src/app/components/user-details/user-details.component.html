@@ -1,1 +1,25 @@
-<p>user-details works!</p>
+<mat-card class="example-card">
+  <mat-card-header>
+    <img mat-card-avatar mat-card-md-image [src]="user.avatar_url" [alt]="user.login">
+    <mat-card-title>{{ user.login}}</mat-card-title>
+    <mat-card-subtitle>{{ user.html_url}}</mat-card-subtitle>
+    <ng-container *ngFor="let repo of repoDetails | slice:0:1">
+        <div>
+          <span>{{repo.name}}</span>:
+          <span>{{repo.language}}</span>
+        </div>
+      </ng-container>
+
+    <mat-card-actions>
+        <button mat-stroked-button color="primary">Details</button>
+    </mat-card-actions>
+  </mat-card-header>
+  <!-- <mat-card-content>
+    <ng-container *ngFor="let repo of repoDetails">
+      <div>
+        <span>{{repo.name}}</span>:
+        <span>{{repo.language}}</span>
+      </div>
+    </ng-container>
+  </mat-card-content> -->
+</mat-card>
