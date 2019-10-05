@@ -19,13 +19,14 @@ export class UserDetailsComponent implements OnInit {
 
   constructor(private userService: UserService) {}
 
-  ngOnInit() {
-    this.userService
-      .getRepoDetails(this.user.repos_url)
-      .subscribe(repoDetails => (this.repoDetails = repoDetails));
-  }
+  ngOnInit() {}
 
   toggleExpansion() {
     this.isExpanded = !this.isExpanded;
+    if (this.isExpanded) {
+      this.userService
+        .getRepoDetails(this.user.repos_url)
+        .subscribe(repoDetails => (this.repoDetails = repoDetails));
+    }
   }
 }

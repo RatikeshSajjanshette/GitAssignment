@@ -1,5 +1,6 @@
 <app-header (searchTermChange)="onSearchTermChange($event)" (sortOptionChange)="onSortOptionChange($event)">
 </app-header>
+<label>Total Results:<span> {{userListWithCount?.total_count || 0}}</span></label>
 <app-users-list [userListWithCount]="userListWithCount"></app-users-list>
 <mat-paginator [length]="userListWithCount?.total_count" [pageSize]="perPageResults" (page)="onPageChange($event)">
 </mat-paginator>
