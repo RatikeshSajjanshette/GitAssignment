@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserSortOption } from './models/user-sort-option.dto';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'GitAssignment';
+
+  onSearchTermChange(searchTerm: string): void {
+    console.log("onSearchTermChange - ", searchTerm);
+
+  }
+
+  onSortOptionChange(sortOption: UserSortOption): void {
+    console.log("onSortOptionChange - ", sortOption);
+  }
 }
