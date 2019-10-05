@@ -6,8 +6,17 @@
   justify-content: center;
   flex-direction: row;
 }
-.header > mat-form-field
-{
+
+.header>mat-form-field {
   flex: 0.33 0.33 auto;
-  margin:5px 50px;
+  margin: 5px 50px;
+}
+
+.sort-option {
+  line-height: 1;
+}
+
+.sort-option-icon {
+  float: right;
+  line-height: 1;
 }
