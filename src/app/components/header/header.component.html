@@ -1,32 +1,34 @@
-<mat-form-field>
-  <mat-label>Sort By</mat-label>
-  <mat-select [formControl]="sortInput">
-    <mat-select-trigger>
-      {{ sortInput?.value?.label }}
-      <ng-container [ngSwitch]="sortInput?.value?.value?.sortOrder">
-        <ng-container *ngSwitchCase="sortOrder.ASC">
-          <mat-icon>arrow_upward</mat-icon>
+<header class="header">
+  <mat-form-field>
+    <mat-label>Sort By</mat-label>
+    <mat-select [formControl]="sortInput">
+      <mat-select-trigger>
+        {{ sortInput?.value?.label }}
+        <ng-container [ngSwitch]="sortInput?.value?.value?.sortOrder">
+          <ng-container *ngSwitchCase="sortOrder.ASC">
+            <mat-icon>arrow_upward</mat-icon>
+          </ng-container>
+          <ng-container *ngSwitchCase="sortOrder.DESC">
+            <mat-icon matSuffix>arrow_downward</mat-icon>
+          </ng-container>
         </ng-container>
-        <ng-container *ngSwitchCase="sortOrder.DESC">
-          <mat-icon matSuffix>arrow_downward</mat-icon>
+      </mat-select-trigger>
+      <mat-option *ngFor="let option of sortOptions" [value]="option">
+        {{ option.label }}
+        <ng-container [ngSwitch]="option.value.sortOrder">
+          <ng-container *ngSwitchCase="sortOrder.ASC">
+            <mat-icon>arrow_upward</mat-icon>
+          </ng-container>
+          <ng-container *ngSwitchCase="sortOrder.DESC">
+            <mat-icon matSuffix>arrow_downward</mat-icon>
+          </ng-container>
         </ng-container>
-      </ng-container>
-    </mat-select-trigger>
-    <mat-option *ngFor="let option of sortOptions" [value]="option">
-      {{ option.label }}
-      <ng-container [ngSwitch]="option.value.sortOrder">
-        <ng-container *ngSwitchCase="sortOrder.ASC">
-          <mat-icon>arrow_upward</mat-icon>
-        </ng-container>
-        <ng-container *ngSwitchCase="sortOrder.DESC">
-          <mat-icon matSuffix>arrow_downward</mat-icon>
-        </ng-container>
-      </ng-container>
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
-<mat-form-field class="example-full-width">
-  <input type="text" matInput placeholder="Search users" [formControl]="searchInput">
-  <mat-icon matSuffix>mode_search</mat-icon>
-</mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input type="text" matInput placeholder="Search users" [formControl]="searchInput">
+    <mat-icon matSuffix>mode_search</mat-icon>
+  </mat-form-field>
+</header>

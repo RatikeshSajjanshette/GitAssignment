@@ -1,23 +1,26 @@
-<mat-card class="example-card">
-  <mat-card-header>
-    <img mat-card-avatar mat-card-md-image [src]="user.avatar_url" [alt]="user.login">
-    <mat-card-title>{{ user.login}}</mat-card-title>
-    <mat-card-subtitle>{{ user.html_url}}</mat-card-subtitle>
-    <mat-card-subtitle> <span>Score</span>:
-      <span>{{user.score | number:'1.2-2'}}</span></mat-card-subtitle>
-    <mat-card-actions>
-      <button mat-stroked-button color="primary"
-        (click)="toggleExpansion()">{{isExpanded ? 'Collapse':  'Details'}}</button>
-    </mat-card-actions>
-  </mat-card-header>
-  <mat-accordion>
-    <mat-expansion-panel [expanded]="isExpanded">
-      <ng-container *ngFor="let repo of repoDetails">
-        <div>
-          <span>{{repo.name}}</span>
-          <span>{{repo.language}}</span>
+<section class="user-details">
+  <mat-card>
+    <mat-card-header class="card-header">
+      <img mat-card-avatar mat-card-md-image [src]="user.avatar_url" [alt]="user.login">
+      <mat-card-title>{{ user.login}}</mat-card-title>
+      <mat-card-subtitle><label>Profile URL: </label><a [href]="user.html_url">{{ user.html_url}}</a>
+      </mat-card-subtitle>
+      <mat-card-subtitle> <span>Score</span>:
+        <span>{{user.score | number:'1.2-2'}}</span></mat-card-subtitle>
+      <mat-card-actions>
+        <button class="action-button-expand" mat-stroked-button color="primary"
+          (click)="toggleExpansion()">{{isExpanded ? 'Collapse':  'Details'}}</button>
+      </mat-card-actions>
+    </mat-card-header>
+    <mat-accordion>
+      <mat-expansion-panel class="user-details-expanded" [expanded]="isExpanded">
+        <div class="repo-details-container">
+          <div class="repo-details-row" *ngFor="let repo of repoDetails">
+            <span class="repo-name">{{repo.name}}</span>
+            <span class="repo-lang">{{repo.language}}</span>
+          </div>
         </div>
-      </ng-container>
-    </mat-expansion-panel>
-  </mat-accordion>
-</mat-card>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card>
+</section>

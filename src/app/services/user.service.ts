@@ -18,6 +18,6 @@ export class UserService {
   }
 
   getRepoDetails(repoUrl: string): Observable<UserRepoDetails[]> {
-    return this.httpClient.get<UserRepoDetails[]>(repoUrl + '?access_token=577e2d1710880e7a5d24ce96032b4314762bf131');
+    return this.httpClient.get<UserRepoDetails[]>(repoUrl + '?access_token=80392b5de82d8a00f502237545cc9f69d798234d');
   }
 }

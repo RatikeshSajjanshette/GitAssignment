@@ -1,0 +1,16 @@
+.page {
+  display: flex;
+  direction: col;
+  flex-direction: column;
+  align-content: center;
+  margin: 0 150px;
+}
+
+.page-info {
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+.mat-paginator {
+  background: unset;
+}

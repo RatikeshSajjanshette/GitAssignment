@@ -1,3 +1,42 @@
 .mat-expansion-panel {
-  box-shadow:none;
+  box-shadow: none;
+}
+
+.user-details {
+  margin: 15px 0;
+}
+
+.card-header {
+  position: relative;
+}
+
+.action-button-expand {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  padding: 0 20px;
+}
+
+.repo-details-container {
+  border-top: #CCC solid 2px;
+  margin-top: 15px;
+}
+
+.repo-details-row {
+  padding: 10px;
+  text-align: center;
+}
+
+.repo-details-row:nth-child(even) {
+  background: #CCC
+}
+
+.repo-details-row:nth-child(odd) {
+  background: #FFF
+}
+
+.repo-name,
+.repo-lang {
+  display: inline-block;
+  width: 50%;
 }
