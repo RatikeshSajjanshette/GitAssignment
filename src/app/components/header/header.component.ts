@@ -5,7 +5,7 @@ import { debounceTime } from "rxjs/internal/operators/debounceTime";
 import { distinctUntilChanged } from "rxjs/internal/operators/distinctUntilChanged";
 import { filter } from "rxjs/internal/operators/filter";
 
-import { UserSortOption, SortType } from "./../../models/user-sort-option.dto";
+import { UserSortOption, SortOrder } from "./../../models/user-sort-option.dto";
 
 @Component({
   selector: "app-header",
@@ -23,46 +23,45 @@ export class HeaderComponent implements OnInit {
 
   readonly searchInputMinLimit = 3;
 
-  readonly sortType = SortType;
-
-  readonly selectedSortOption = {
-    label: "Name",
-    value: {
-      key: "name",
-      sortType: SortType.ASC
-    }
-  };
+  readonly sortOrder = SortOrder;
 
   readonly sortOptions: UserSortOption[] = [
-    this.selectedSortOption,
     {
       label: "Name",
       value: {
-        key: "name",
-        sortType: SortType.DESC
+        key: "login",
+        sortOrder: SortOrder.ASC
+      }
+    },
+    {
+      label: "Name",
+      value: {
+        key: "login",
+        sortOrder: SortOrder.DESC
       }
     },
     {
       label: "Rank",
       value: {
-        key: "rank",
-        sortType: SortType.ASC
+        key: "score",
+        sortOrder: SortOrder.ASC
       }
     },
     {
       label: "Rank",
       value: {
-        key: "rank",
-        sortType: SortType.DESC
+        key: "score",
+        sortOrder: SortOrder.DESC
       }
     }
   ];
 
   searchInput = new FormControl();
 
-  sortInput = new FormControl(this.selectedSortOption);
+  sortInput = new FormControl();
 
   ngOnInit() {
+
     this.searchInput.valueChanges
       .pipe(
         debounceTime(500),

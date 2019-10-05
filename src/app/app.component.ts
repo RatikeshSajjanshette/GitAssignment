@@ -5,6 +5,7 @@ import { PageEvent } from "@angular/material/paginator/typings/paginator";
 import { UserSortOption } from "./models/user-sort-option.dto";
 import { UserListWithCount } from "./models/user.dto";
 import { UserService } from "./services/user.service";
+import { sortStringFunction } from "./services/sort-helpers";
 
 @Component({
   selector: "app-root",
@@ -14,19 +15,20 @@ import { UserService } from "./services/user.service";
 export class AppComponent {
   userListWithCount: UserListWithCount;
   searchTerm = "";
+  sortOption: UserSortOption;
   length = 0;
   readonly perPageResults = 5;
 
   constructor(private userService: UserService) {}
 
   onSearchTermChange(searchTerm: string): void {
-    console.log("onSearchTermChange - ", searchTerm);
     this.searchTerm = searchTerm;
     this.fetchUserList(this.searchTerm, this.perPageResults, 1);
   }
 
   onSortOptionChange(sortOption: UserSortOption): void {
-    console.log("onSortOptionChange - ", sortOption);
+    this.sortOption = sortOption;
+    this.sortResults(this.sortOption);
   }
 
   onPageChange(pageEvent: PageEvent) {
@@ -42,7 +44,19 @@ export class AppComponent {
       .getUserList(searchTerm, perPageResults, page)
       .subscribe(userListWithCount => {
         this.userListWithCount = userListWithCount;
+        this.sortResults(this.sortOption);
       });
   }
 
+  sortResults(sortOption: UserSortOption) {
+    if (sortOption) {
+      this.userListWithCount.items.sort((user1, user2) =>
+        sortStringFunction(
+          sortOption.value.sortOrder,
+          user1[sortOption.value.key],
+          user2[sortOption.value.key]
+        )
+      );
+    }
+  }
 }

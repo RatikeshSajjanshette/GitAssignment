@@ -1,11 +1,11 @@
-export enum SortType {
+export enum SortOrder {
   ASC = "asc",
   DESC = "desc"
 }
 
 export interface UserSortOptionValueConfig {
   key: string;
-  sortType: SortType;
+  sortOrder: SortOrder;
 }
 
 export interface UserSortOption {
