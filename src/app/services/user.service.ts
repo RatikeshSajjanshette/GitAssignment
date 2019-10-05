@@ -13,8 +13,8 @@ import { ApiUrls } from "./apiUrls/ApiUrls";
 export class UserService {
   constructor(private httpClient: HttpClient) {}
 
-  getUserList(searchTerm: string): Observable<UserListWithCount> {
-    return this.httpClient.get<UserListWithCount>(ApiUrls.SEARCH(searchTerm));
+  getUserList(searchTerm: string, perPageResults: number, page : number): Observable<UserListWithCount> {
+    return this.httpClient.get<UserListWithCount>(ApiUrls.SEARCH(searchTerm, perPageResults, page));
   }
 
   getRepoDetails(repoUrl: string): Observable<UserRepoDetails[]> {

@@ -2,7 +2,7 @@ import { environment } from '../../../environments/environment';
 
 export class ApiUrls {
 
-  static SEARCH = searchTerm => `${environment.baseUrl}search/users?q=${searchTerm}`;
+  static SEARCH = (searchTerm: string, perPageResults: number, page : number) => `${environment.baseUrl}search/users?q=${searchTerm}&per_page=${perPageResults}&page=${page}`;
 }
 
 // backEndApiBaseUrl: 'http://api.github.com/'

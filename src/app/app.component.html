@@ -1,2 +1,5 @@
-<app-header (searchTermChange)="onSearchTermChange($event)" (sortOptionChange)="onSortOptionChange($event)"></app-header>
+<app-header (searchTermChange)="onSearchTermChange($event)" (sortOptionChange)="onSortOptionChange($event)">
+</app-header>
 <app-users-list [userListWithCount]="userListWithCount"></app-users-list>
+<mat-paginator [length]="userListWithCount?.total_count" [pageSize]="perPageResults" (page)="onPageChange($event)">
+</mat-paginator>
