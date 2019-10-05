@@ -50,7 +50,7 @@ export class AppComponent {
 
   sortResults(sortOption: UserSortOption) {
     if (sortOption) {
-      this.userListWithCount.items.sort((user1, user2) =>
+      (this.userListWithCount && this.userListWithCount.items || []).sort((user1, user2) =>
         sortStringFunction(
           sortOption.value.sortOrder,
           user1[sortOption.value.key],
