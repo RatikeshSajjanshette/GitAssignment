@@ -17,9 +17,7 @@ export class HeaderComponent implements OnInit {
   searchTermChange: EventEmitter<string> = new EventEmitter<string>();
 
   @Output()
-  sortOptionChange: EventEmitter<UserSortOption> = new EventEmitter<
-    UserSortOption
-  >();
+  sortOptionChange: EventEmitter<UserSortOption> = new EventEmitter<UserSortOption>();
 
   readonly searchInputMinLimit = 3;
 
